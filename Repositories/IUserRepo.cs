@@ -1,4 +1,6 @@
-﻿using WebFrontEndPractice.Models;
+﻿using Microsoft.AspNetCore.Authentication.BearerToken;
+using WebFrontEndPractice.Models;
+using WebFrontEndPractice.Models.DTOs;
 
 namespace WebFrontEndPractice.Repositories
 {
@@ -6,5 +8,7 @@ namespace WebFrontEndPractice.Repositories
     {
         public Task<List<User>> GetUsers();
         public void AddUser(User user);
+
+        public Task<AccessTokenResponse> login(LoginDto user);
     }
 }

@@ -1,4 +1,6 @@
-﻿using WebFrontEndPractice.Models;
+﻿using Microsoft.AspNetCore.Authentication.BearerToken;
+using WebFrontEndPractice.Models;
+using WebFrontEndPractice.Models.DTOs;
 using WebFrontEndPractice.Repositories;
 
 namespace WebFrontEndPractice.Services
@@ -12,14 +14,21 @@ namespace WebFrontEndPractice.Services
             _repo = repo;
         }
 
-        public Task<User> AddSingleUser(User user)
+        public  void AddSingleUser(User user)
         {
-            throw new NotImplementedException();
+           _repo.AddUser(user);
         }
 
         public Task<List<User>> GetAllUsers()
         {
             throw new NotImplementedException();
+        }
+
+        
+
+       public Task<AccessTokenResponse> LoginUser(LoginDto user)
+        {
+          return _repo.login(user);
         }
     }
 }

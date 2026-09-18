@@ -1,0 +1,23 @@
+﻿@model WebFrontEndPractice.Models.DTOs.LoginDto
+
+<div class="container-fluid">
+
+
+    <@{
+    ViewData["Title"] = "Login";
+                }
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post" class="mb-3">
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input class="form-control" name="Email" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input class="form-control" name="Password" type="password" />
+    </div>
+    <button class="btn btn-primary" type="submit">Login</button>
+</form>
+    </div>

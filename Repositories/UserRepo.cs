@@ -1,5 +1,8 @@
-﻿using System.Net.Http.Json;
+﻿using Microsoft.AspNetCore.Authentication.BearerToken;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using WebFrontEndPractice.Models;
+using WebFrontEndPractice.Models.DTOs;
 
 namespace WebFrontEndPractice.Repositories
 {
@@ -19,5 +22,15 @@ namespace WebFrontEndPractice.Repositories
         {
             return await _client.GetFromJsonAsync<List<User>>($"https://localhost:7115/Users");
         }
+
+        public async Task<AccessTokenResponse> login(LoginDto user)
+        {
+            var response = await _client.PostAsJsonAsync($"https://localhost:7115/Login", user);
+            response.EnsureSuccessStatusCode();
+            var tokenResponse = await response.Content.ReadFromJsonAsync<AccessTokenResponse>();
+            return tokenResponse!;
+        }
+
+        
     }
 }
